@@ -14,8 +14,8 @@ const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         const { x, y } = payload[0].payload;
         return (
-            <div className="p-2 bg-white border rounded shadow-md text-sm">
-                <p>Date: {new Date(x).toLocaleString()}</p>
+            <div className="p-2 bg-black border rounded shadow-md text-sm">
+                {/* <p>Date: {new Date(x).toLocaleString()}</p> */}
                 <p>Net PnL: {y.toFixed(2)}</p>
             </div>
         );
@@ -25,14 +25,14 @@ const CustomTooltip = ({ active, payload }) => {
 
 export default function BarChartComponent() {
     return (
-        <div className="w-full max-w-4xl mx-auto p-4 bg-white shadow-md rounded">
-            <div className="mb-4">
+        <div className="w-full max-w-4xl mx-auto p-4 bg-black shadow-md rounded">
+            <div className="mb-4 text-white">
                 <h2 className="text-lg font-bold text-center">Net Daily PnL - Bar Chart</h2>
-                <p className="text-sm text-gray-500 text-center">January - March 2025</p>
+                <p className="text-sm text-white text-center">January - March 2025</p>
             </div>
             <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={netDailyPnL}>
-                    <CartesianGrid stroke="#e2e8f0" vertical={false} />
+                    <CartesianGrid stroke="#5A5A5A" vertical={false} />
                     <XAxis
                         dataKey="x"
                         tickFormatter={(value) => new Date(value).toLocaleDateString()}
@@ -40,24 +40,24 @@ export default function BarChartComponent() {
                         axisLine={false}
                     />
                     <YAxis tickLine={false} axisLine={false} />
-                    <Tooltip content={<CustomTooltip />} />
+                    {/* <Tooltip content={<CustomTooltip />} /> */}
                     <Bar dataKey="y">
-                        <LabelList position="top" dataKey="x" fill="black" />
+                        {/* <LabelList position="top" dataKey="y" fill="white" /> */}
                         {netDailyPnL.map((item, index) => (
                             <Cell
                                 key={index}
-                                fill={item.y > 0 ? "green" : "red"}
+                                fill={item.y > 0 ? "#8cff66" : "#ff6666"}
                             />
                         ))}
                     </Bar>
                 </BarChart>
             </ResponsiveContainer>
-            <div className="flex items-center gap-2 mt-4 text-sm">
+            {/* <div className="flex items-center gap-2 mt-4 text-sm">
                 <div className="flex items-center gap-2 font-medium">
                     Trending up by 5.2% <TrendingUp className="h-4 w-4" />
                 </div>
                 <p className="text-gray-500">Showing Net Daily PnL for January - March 2025</p>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -14,7 +14,7 @@ function CustomTooltip({ active, payload }) {
   if (active && payload && payload.length) {
     const { x, y } = payload[0].payload;
     return (
-      <div className="p-2 bg-white border rounded shadow-md text-sm">
+      <div className="p-2 bg-white/20 border rounded shadow-md text-a1a1aa text-sm">
         <p className="font-medium">Date: {new Date(x).toLocaleString()}</p>
         <p className="font-medium">PnL: {y.toFixed(2)}</p>
       </div>
@@ -25,19 +25,19 @@ function CustomTooltip({ active, payload }) {
 
 function NetDailyPnL() {
   return (
-    <div className="p-4 bg-white shadow-md rounded-md">
+    <div className="p-4 bg-black shadow-md rounded-md text-white">
       <header className="mb-4">
         <h2 className="text-lg font-bold">Net Daily PnL</h2>
-        <p className="text-sm text-gray-500">Track performance over time</p>
+        <p className="text-sm text-white">Track performance over time</p>
       </header>
-      <div className="w-full h-80">
-        <LineChart
+      <div className="w-full h-80 text-white">
+        <LineChart className="text-white"
           data={netDailyPnL}
           width={700}
           height={300}
           margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
         >
-          <CartesianGrid stroke="#e2e8f0" vertical={false} />
+          <CartesianGrid stroke="#5A5A5A" vertical={false} />
           <XAxis
             dataKey="x"
             tickFormatter={(value) => new Date(value).toLocaleDateString()}
@@ -49,21 +49,21 @@ function NetDailyPnL() {
           <Line
             type="monotone"
             dataKey="y"
-            stroke="#4f46e5"
+            stroke="#ab20fd"
             strokeWidth={2}
-            dot={{ r: 4, stroke: "#4f46e5", strokeWidth: 2 }}
+            dot={{ r: 4, stroke: "#d99bfd", strokeWidth: 2 }}
             activeDot={{ r: 6 }}
           />
         </LineChart>
       </div>
-      <footer className="flex-col items-start gap-2 mt-4 text-sm">
+      {/* <footer className="flex-col items-start gap-2 mt-4 text-sm">
         <div className="flex gap-2 font-medium leading-none">
           Trending up by 5.2% <TrendingUp className="h-4 w-4" />
         </div>
         <p className="text-gray-500 leading-none">
           Showing performance data from January to March 2025
         </p>
-      </footer>
+      </footer> */}
     </div>
   );
 }

@@ -50,7 +50,7 @@ const ProfitLossCalendar = () => {
       return {
         className: 'profit-day',
         style: {
-          backgroundColor: 'rgba(0, 255, 0, 0.1)',
+          backgroundColor: 'rgba(0, 255, 0, 0.5)',
           color: 'green',
         },
       };
@@ -60,7 +60,7 @@ const ProfitLossCalendar = () => {
       return {
         className: 'loss-day',
         style: {
-          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          backgroundColor: 'rgba(255, 0, 0, 0.5)',
           color: 'red',
         },
       };
@@ -70,9 +70,9 @@ const ProfitLossCalendar = () => {
   };
 
   return (
-    <div className="h-screen p-4 bg-gray-100">
-      <h1 className="text-2xl font-bold mb-4">Analysis Calendar</h1>
-      <div className="h-5/6 bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="h-screen p-4 bg-zinc-950">
+      <h1 className="text-2xl font-bold mb-4 text-white">Analysis Calendar</h1>
+      <div className="h-5/6 bg-[#000] rounded-lg shadow-lg overflow-hidden text-white">
         <Calendar
           localizer={localizer}
         //   events={events}
@@ -84,13 +84,13 @@ const ProfitLossCalendar = () => {
           dayPropGetter={dayPropGetter}
         />
       </div>
-      <div className="mt-4 flex justify-center space-x-4">
+      <div className="mt-4 flex justify-center space-x-4 text-white">
         <div className="flex items-center">
-          <div className="w-4 h-4 bg-green-100 border border-green-500 mr-2"></div>
+          <div className="w-4 h-4 bg-green-900 border border-green-500 mr-2"></div>
           <span>Profit</span>
         </div>
         <div className="flex items-center">
-          <div className="w-4 h-4 bg-red-100 border border-red-500 mr-2"></div>
+          <div className="w-4 h-4 bg-red-900 border border-red-500 mr-2"></div>
           <span>Loss</span>
         </div>
       </div>
